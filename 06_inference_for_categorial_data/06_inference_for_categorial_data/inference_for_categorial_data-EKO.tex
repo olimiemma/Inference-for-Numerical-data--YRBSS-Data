@@ -1,0 +1,947 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Inference for categorical data},
+  pdfauthor={Emmanuel Kasigazi},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Inference for categorical data}
+\author{Emmanuel Kasigazi}
+\date{}
+
+\begin{document}
+\maketitle
+
+\subsection{Getting Started}\label{getting-started}
+
+\subsubsection{Load packages}\label{load-packages}
+
+In this lab, we will explore and visualize the data using the
+\textbf{tidyverse} suite of packages, and perform statistical inference
+using \textbf{infer}. The data can be found in the companion package for
+OpenIntro resources, \textbf{openintro}.
+
+Let's load the packages.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(openintro)}
+\FunctionTok{library}\NormalTok{(infer)}
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(openintro)}
+\FunctionTok{library}\NormalTok{(infer)}
+\FunctionTok{library}\NormalTok{(infer)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(tinytex)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{The data}\label{the-data}
+
+You will be analyzing the same dataset as in the previous lab, where you
+delved into a sample from the Youth Risk Behavior Surveillance System
+(YRBSS) survey, which uses data from high schoolers to help discover
+health patterns. The dataset is called \texttt{yrbss}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  What are the counts within each category for the amount of days these
+  students have texted while driving within the past 30 days?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Load the yrbss dataset}
+\FunctionTok{data}\NormalTok{(yrbss)}
+
+\CommentTok{\# Check if the dataset is loaded correctly}
+\FunctionTok{head}\NormalTok{(yrbss)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 13
+##     age gender grade hispanic race                      height weight helmet_12m
+##   <int> <chr>  <chr> <chr>    <chr>                      <dbl>  <dbl> <chr>     
+## 1    14 female 9     not      Black or African American  NA      NA   never     
+## 2    14 female 9     not      Black or African American  NA      NA   never     
+## 3    15 female 9     hispanic Native Hawaiian or Other~   1.73   84.4 never     
+## 4    15 female 9     not      Black or African American   1.6    55.8 never     
+## 5    15 female 9     not      Black or African American   1.5    46.7 did not r~
+## 6    15 female 9     not      Black or African American   1.57   67.1 did not r~
+## # i 5 more variables: text_while_driving_30d <chr>, physically_active_7d <int>,
+## #   hours_tv_per_school_day <chr>, strength_training_7d <int>,
+## #   school_night_hours_sleep <chr>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{yrbss }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{count}\NormalTok{(text\_while\_driving\_30d)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 9 x 2
+##   text_while_driving_30d     n
+##   <chr>                  <int>
+## 1 0                       4792
+## 2 1-2                      925
+## 3 10-19                    373
+## 4 20-29                    298
+## 5 3-5                      493
+## 6 30                       827
+## 7 6-9                      311
+## 8 did not drive           4646
+## 9 <NA>                     918
+\end{verbatim}
+
+\textbf{text\_while\_driving\_30d n} \textbf{1 0 4792 2 1-2 925 3 10-19
+373 4 20-29 298 5 3-5 493 6 30 827 7 6-9 311 8 did not drive 4646 9 NA
+918}
+
+What is the proportion of people who have texted while driving every day
+in the past 30 days and never wear helmets? \textbf{** 0.03408673
+``Percentage: 3.41\%'' ``Count: 463''}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate the proportion}
+\NormalTok{proportion }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(yrbss}\SpecialCharTok{$}\NormalTok{text\_while\_driving\_30d }\SpecialCharTok{==} \StringTok{"30"} \SpecialCharTok{\&}\NormalTok{ yrbss}\SpecialCharTok{$}\NormalTok{helmet\_12m }\SpecialCharTok{==} \StringTok{"never"}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{/} \FunctionTok{nrow}\NormalTok{(yrbss)}
+
+\CommentTok{\# Display the proportion}
+\FunctionTok{print}\NormalTok{(proportion)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.03408673
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# To get the percentage}
+\NormalTok{percentage }\OtherTok{\textless{}{-}}\NormalTok{ proportion }\SpecialCharTok{*} \DecValTok{100}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"Percentage: "}\NormalTok{, }\FunctionTok{round}\NormalTok{(percentage, }\DecValTok{2}\NormalTok{), }\StringTok{"\%"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Percentage: 3.41%"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# To see the actual count}
+\NormalTok{count }\OtherTok{\textless{}{-}} \FunctionTok{sum}\NormalTok{(yrbss}\SpecialCharTok{$}\NormalTok{text\_while\_driving\_30d }\SpecialCharTok{==} \StringTok{"30"} \SpecialCharTok{\&}\NormalTok{ yrbss}\SpecialCharTok{$}\NormalTok{helmet\_12m }\SpecialCharTok{==} \StringTok{"never"}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"Count: "}\NormalTok{, count))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Count: 463"
+\end{verbatim}
+
+Remember that you can use \texttt{filter} to limit the dataset to just
+non-helmet wearers. Here, we will name the dataset \texttt{no\_helmet}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(}\StringTok{\textquotesingle{}yrbss\textquotesingle{}}\NormalTok{, }\AttributeTok{package=}\StringTok{\textquotesingle{}openintro\textquotesingle{}}\NormalTok{)}
+\NormalTok{no\_helmet }\OtherTok{\textless{}{-}}\NormalTok{ yrbss }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(helmet\_12m }\SpecialCharTok{==} \StringTok{"never"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Also, it may be easier to calculate the proportion if you create a new
+variable that specifies whether the individual has texted every day
+while driving over the past 30 days or not. We will call this variable
+\texttt{text\_ind}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{no\_helmet }\OtherTok{\textless{}{-}}\NormalTok{ no\_helmet }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{text\_ind =} \FunctionTok{ifelse}\NormalTok{(text\_while\_driving\_30d }\SpecialCharTok{==} \StringTok{"30"}\NormalTok{, }\StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\subsection{Inference on proportions}\label{inference-on-proportions}
+
+When summarizing the YRBSS, the Centers for Disease Control and
+Prevention seeks insight into the population \emph{parameters}. To do
+this, you can answer the question, ``What proportion of people in your
+sample reported that they have texted while driving each day for the
+past 30 days?'' with a statistic; while the question ``What proportion
+of people on earth have texted while driving each day for the past 30
+days?'' is answered with an estimate of the parameter.
+
+The inferential tools for estimating population proportion are analogous
+to those used for means in the last chapter: the confidence interval and
+the hypothesis test.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{no\_helmet }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{drop\_na}\NormalTok{(text\_ind) }\SpecialCharTok{\%\textgreater{}\%} \CommentTok{\# Drop missing values}
+  \FunctionTok{specify}\NormalTok{(}\AttributeTok{response =}\NormalTok{ text\_ind, }\AttributeTok{success =} \StringTok{"yes"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{generate}\NormalTok{(}\AttributeTok{reps =} \DecValTok{1000}\NormalTok{, }\AttributeTok{type =} \StringTok{"bootstrap"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{calculate}\NormalTok{(}\AttributeTok{stat =} \StringTok{"prop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{get\_ci}\NormalTok{(}\AttributeTok{level =} \FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   lower_ci upper_ci
+##      <dbl>    <dbl>
+## 1   0.0654   0.0777
+\end{verbatim}
+
+Note that since the goal is to construct an interval estimate for a
+proportion, it's necessary to both include the \texttt{success} argument
+within \texttt{specify}, which accounts for the proportion of non-helmet
+wearers than have consistently texted while driving the past 30 days, in
+this example, and that \texttt{stat} within \texttt{calculate} is here
+``prop'', signaling that you are trying to do some sort of inference on
+a proportion.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  What is the margin of error for the estimate of the proportion of
+  non-helmet wearers that have texted while driving each day for the
+  past 30 days based on this survey?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Margin of error calculation from the confidence interval}
+\NormalTok{upper\_ci }\OtherTok{\textless{}{-}} \FloatTok{0.0773}
+\NormalTok{lower\_ci }\OtherTok{\textless{}{-}} \FloatTok{0.0654}
+
+\CommentTok{\# Margin of error is half the width of the confidence interval}
+\NormalTok{margin\_of\_error }\OtherTok{\textless{}{-}}\NormalTok{ (upper\_ci }\SpecialCharTok{{-}}\NormalTok{ lower\_ci) }\SpecialCharTok{/} \DecValTok{2}
+
+\CommentTok{\# Display the result}
+\FunctionTok{print}\NormalTok{(margin\_of\_error)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.00595
+\end{verbatim}
+
+\textbf{{[}1{]} 0.00595}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Using the \texttt{infer} package, calculate confidence intervals for
+  two other categorical variables (you'll need to decide which level to
+  call ``success'', and report the associated margins of error. Interpet
+  the interval in context of the data. It may be helpful to create new
+  data sets for each of the two countries first, and then use these data
+  sets to construct the confidence intervals.
+\end{enumerate}
+
+\textbf{**For the first example, I'm calculating the confidence interval
+for the proportion of students who are physically active all 7 days of
+the week.}
+
+\textbf{``success'' is defined as being active every day The output will
+include a 95\% confidence interval and the margin of error}
+
+\textbf{For the second example, I'm calculating the confidence interval
+for the proportion of students who get 8 or more hours of sleep on
+school nights.}
+
+\textbf{``success'' is defined as getting 8+ hours of sleep The output
+will include a 95\% confidence interval and the margin of error**}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Example 1: Confidence interval for proportion of students who are physically active 7 days/week}
+\CommentTok{\# Create indicator for those who are active every day (7 days)}
+\NormalTok{physically\_active }\OtherTok{\textless{}{-}}\NormalTok{ yrbss }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{active\_daily =} \FunctionTok{ifelse}\NormalTok{(physically\_active\_7d }\SpecialCharTok{==} \StringTok{"7"}\NormalTok{, }\StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate 95\% confidence interval}
+\NormalTok{active\_ci }\OtherTok{\textless{}{-}}\NormalTok{ physically\_active }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{drop\_na}\NormalTok{(active\_daily) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{specify}\NormalTok{(}\AttributeTok{response =}\NormalTok{ active\_daily, }\AttributeTok{success =} \StringTok{"yes"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{generate}\NormalTok{(}\AttributeTok{reps =} \DecValTok{1000}\NormalTok{, }\AttributeTok{type =} \StringTok{"bootstrap"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{calculate}\NormalTok{(}\AttributeTok{stat =} \StringTok{"prop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{get\_ci}\NormalTok{(}\AttributeTok{level =} \FloatTok{0.95}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Display the confidence interval}
+\FunctionTok{print}\NormalTok{(active\_ci)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   lower_ci upper_ci
+##      <dbl>    <dbl>
+## 1    0.264    0.279
+\end{verbatim}
+
+\textbf{lower\_ci upper\_ci}
+
+\textbf{0.264 0.280}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate margin of error}
+\NormalTok{active\_margin }\OtherTok{\textless{}{-}}\NormalTok{ (active\_ci}\SpecialCharTok{$}\NormalTok{upper\_ci }\SpecialCharTok{{-}}\NormalTok{ active\_ci}\SpecialCharTok{$}\NormalTok{lower\_ci) }\SpecialCharTok{/} \DecValTok{2}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Margin of error for physically active daily:"}\NormalTok{, active\_margin))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Margin of error for physically active daily: 0.00744083395942899"
+\end{verbatim}
+
+\textbf{``Margin of error for physically active daily:
+0.00792824943651391''}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Example 2: Confidence interval for proportion of students who get 8+ hours of sleep on school nights}
+\CommentTok{\# Create indicator for those who get 8+ hours of sleep}
+\NormalTok{sleep\_data }\OtherTok{\textless{}{-}}\NormalTok{ yrbss }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{enough\_sleep =} \FunctionTok{ifelse}\NormalTok{(school\_night\_hours\_sleep }\SpecialCharTok{\textgreater{}=} \StringTok{"8"}\NormalTok{, }\StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate 95\% confidence interval}
+\NormalTok{sleep\_ci }\OtherTok{\textless{}{-}}\NormalTok{ sleep\_data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{drop\_na}\NormalTok{(enough\_sleep) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{specify}\NormalTok{(}\AttributeTok{response =}\NormalTok{ enough\_sleep, }\AttributeTok{success =} \StringTok{"yes"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{generate}\NormalTok{(}\AttributeTok{reps =} \DecValTok{1000}\NormalTok{, }\AttributeTok{type =} \StringTok{"bootstrap"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{calculate}\NormalTok{(}\AttributeTok{stat =} \StringTok{"prop"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{get\_ci}\NormalTok{(}\AttributeTok{level =} \FloatTok{0.95}\NormalTok{)}
+
+\CommentTok{\# Display the confidence interval}
+\FunctionTok{print}\NormalTok{(sleep\_ci)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   lower_ci upper_ci
+##      <dbl>    <dbl>
+## 1    0.272    0.289
+\end{verbatim}
+
+\textbf{lower\_ci 0.27}
+
+\textbf{upper\_ci 0.288}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate margin of error}
+\NormalTok{sleep\_margin }\OtherTok{\textless{}{-}}\NormalTok{ (sleep\_ci}\SpecialCharTok{$}\NormalTok{upper\_ci }\SpecialCharTok{{-}}\NormalTok{ sleep\_ci}\SpecialCharTok{$}\NormalTok{lower\_ci) }\SpecialCharTok{/} \DecValTok{2}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Margin of error for 8+ hours of sleep:"}\NormalTok{, sleep\_margin))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Margin of error for 8+ hours of sleep: 0.00822963113092826"
+\end{verbatim}
+
+\textbf{``Margin of error for 8+ hours of sleep: 0.00823267126064045''}
+
+\subsection{How does the proportion affect the margin of
+error?}\label{how-does-the-proportion-affect-the-margin-of-error}
+
+Imagine you've set out to survey 1000 people on two questions: are you
+at least 6-feet tall? and are you left-handed? Since both of these
+sample proportions were calculated from the same sample size, they
+should have the same margin of error, right? Wrong! While the margin of
+error does change with sample size, it is also affected by the
+proportion.
+
+Think back to the formula for the standard error:
+\(SE = \sqrt{p(1-p)/n}\). This is then used in the formula for the
+margin of error for a 95\% confidence interval:
+
+\[
+ME = 1.96\times SE = 1.96\times\sqrt{p(1-p)/n} \,.
+\] Since the population proportion \(p\) is in this \(ME\) formula, it
+should make sense that the margin of error is in some way dependent on
+the population proportion. We can visualize this relationship by
+creating a plot of \(ME\) vs.~\(p\).
+
+Since sample size is irrelevant to this discussion, let's just set it to
+some value (\(n = 1000\)) and use this value in the following
+calculations:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{n }\OtherTok{\textless{}{-}} \DecValTok{1000}
+\end{Highlighting}
+\end{Shaded}
+
+The first step is to make a variable \texttt{p} that is a sequence from
+0 to 1 with each number incremented by 0.01. You can then create a
+variable of the margin of error (\texttt{me}) associated with each of
+these values of \texttt{p} using the familiar approximate formula
+(\(ME = 2 \times SE\)).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{seq}\NormalTok{(}\AttributeTok{from =} \DecValTok{0}\NormalTok{, }\AttributeTok{to =} \DecValTok{1}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.01}\NormalTok{)}
+\NormalTok{me }\OtherTok{\textless{}{-}} \DecValTok{2} \SpecialCharTok{*} \FunctionTok{sqrt}\NormalTok{(p }\SpecialCharTok{*}\NormalTok{ (}\DecValTok{1} \SpecialCharTok{{-}}\NormalTok{ p)}\SpecialCharTok{/}\NormalTok{n)}
+\end{Highlighting}
+\end{Shaded}
+
+Lastly, you can plot the two variables against each other to reveal
+their relationship. To do so, we need to first put these variables in a
+data frame that you can call in the \texttt{ggplot} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dd }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{p =}\NormalTok{ p, }\AttributeTok{me =}\NormalTok{ me)}
+\FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ dd, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ p, }\AttributeTok{y =}\NormalTok{ me)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_line}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Population Proportion"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Margin of Error"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{inference_for_categorial_data-EKO_files/figure-latex/me-plot-1.pdf}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Describe the relationship between \texttt{p} and \texttt{me}. Include
+  the margin of error vs.~population proportion plot you constructed in
+  your answer. For a given sample size, for which value of \texttt{p} is
+  margin of error maximized?
+\end{enumerate}
+
+\textbf{The relationship between the population proportion (p) and the
+margin of error (me) is parabolic. As shown in the plot, the margin of
+error is at its maximum when p = 0.5 and decreases symmetrically as p
+approaches either 0 or 1.}
+
+\textbf{This relationship can be explained by the formula for margin of
+error:}
+
+\textbf{ME = 1.96 × √(p(1-p)/n)}
+
+\textbf{When we look at the term p(1-p) within this formula: - When p =
+0.5: p(1-p) = 0.5 × 0.5 = 0.25 (maximum value) - When p approaches 0 or
+1: p(1-p) approaches 0}
+
+\textbf{For a given sample size, the margin of error is maximized when p
+= 0.5 (50\%). This makes intuitive sense because a proportion of 0.5
+represents maximum variability in a binary outcome - it's essentially a
+50/50 split, which creates the most uncertainty in our estimate.}
+
+\textbf{To demonstrate this mathematically, we can take the derivative
+of the p(1-p) function with respect to p, set it equal to zero, and
+solve for p: - d/dp{[}p(1-p){]} = 1-2p = 0 - 1-2p = 0 - p = 0.5}
+
+\textbf{This confirms that the margin of error reaches its maximum value
+when the population proportion is 0.5.}
+
+\textbf{In practical terms, this means that when designing a study where
+you expect the proportion to be close to 0.5, you'll need a larger
+sample size to achieve the same precision compared to a study where the
+expected proportion is closer to 0 or 1.**}
+
+\subsection{Success-failure condition}\label{success-failure-condition}
+
+We have emphasized that you must always check conditions before making
+inference. For inference on proportions, the sample proportion can be
+assumed to be nearly normal if it is based upon a random sample of
+independent observations and if both \(np \geq 10\) and
+\(n(1 - p) \geq 10\). This rule of thumb is easy enough to follow, but
+it makes you wonder: what's so special about the number 10?
+
+The short answer is: nothing. You could argue that you would be fine
+with 9 or that you really should be using 11. What is the ``best'' value
+for such a rule of thumb is, at least to some degree, arbitrary.
+However, when \(np\) and \(n(1-p)\) reaches 10 the sampling distribution
+is sufficiently normal to use confidence intervals and hypothesis tests
+that are based on that approximation.
+
+You can investigate the interplay between \(n\) and \(p\) and the shape
+of the sampling distribution by using simulations. Play around with the
+following app to investigate how the shape, center, and spread of the
+distribution of \(\hat{p}\) changes as \(n\) and \(p\) changes.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{5}
+\tightlist
+\item
+  Describe the sampling distribution of sample proportions at
+  \(n = 300\) and \(p = 0.1\). Be sure to note the center, spread, and
+  shape.
+\end{enumerate}
+
+**\textbf{The sampling distribution of sample proportions at n = 300 and
+p = 0.1 has the following characteristics:}
+
+\textbf{Center: The sampling distribution is centered at p = 0.1, which
+is the true population proportion. This is visible in the histogram,
+where the peak is centered around 0.1 on the x-axis. Spread: The
+standard error of the sampling distribution is √(p(1-p)/n) = √(0.1 ×
+0.9/300) ≈ 0.0173. This relatively small spread is reflected in the
+histogram, where most of the sample proportions fall within a narrow
+range around 0.1, roughly between 0.05 and 0.15. Shape: The sampling
+distribution is approximately normal, following the bell-shaped curve
+characteristic of a normal distribution. This confirms that the Central
+Limit Theorem applies since both np = 30 and n(1-p) = 270 greatly exceed
+the threshold of 10 required by the success-failure condition.}
+
+\textbf{The histogram shows some natural sampling variability but
+clearly demonstrates the properties expected from statistical theory - a
+normal distribution centered at the true population proportion with a
+spread determined by the standard error formula.**}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{6}
+\tightlist
+\item
+  Keep \(n\) constant and change \(p\). How does the shape, center, and
+  spread of the sampling distribution vary as \(p\) changes. You might
+  want to adjust min and max for the \(x\)-axis for a better view of the
+  distribution.
+\end{enumerate}
+
+\textbf{Spread: The spread (standard error) follows the formula SE =
+√(p(1-p)/n). This creates an interesting pattern:}
+
+\textbf{The spread is smallest when p is near 0 or near 1 The spread
+increases as p approaches 0.5 The spread reaches its maximum when p =
+0.5 The relationship between p and spread forms a parabolic shape,
+similar to the margin of error relationship we saw earlier.}
+
+\textbf{Shape: The sampling distribution is approximately normal as long
+as the success-failure condition is met (np ≥ 10 and n(1-p) ≥ 10). When
+p is very close to 0 or 1, the distribution becomes slightly skewed
+(right-skewed for small p, left-skewed for large p) until p is extreme
+enough that the condition is violated.}
+
+\textbf{Center: The center of the sampling distribution always equals
+the true population proportion p.~As p increases from near 0 to 0.5 and
+then to near 1, the center of the distribution shifts accordingly along
+the x-axis.}
+
+\textbf{This behavior reinforces what we learned about the margin of
+error: proportions near 0.5 have the most variability in their
+estimates, while proportions near 0 or 1 have less variability and
+therefore produce more precise estimates.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{7}
+\item
+  Now also change \(n\). How does \(n\) appear to affect the
+  distribution of \(\hat{p}\)? When we change both p and n, we observe
+  several key effects on the sampling distribution of p̂:
+
+  \textbf{Effect of n (sample size):}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{As n increases, the spread of the sampling distribution
+    decreases, making it narrower and more concentrated around the true
+    value p}
+  \item
+    \textbf{The standard error formula SE = √(p(1-p)/n) shows this
+    relationship explicitly - larger n leads to smaller standard error}
+  \item
+    \textbf{The distribution becomes more precisely centered on the true
+    proportion}
+  \item
+    \textbf{With very large n, even distributions with extreme values of
+    p become approximately normal}
+  \end{itemize}
+
+  \textbf{Combined effects of changing both p and n:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{For any value of p, increasing n makes the distribution
+    narrower}
+  \item
+    \textbf{For any value of n, the distribution is widest when p = 0.5
+    and narrowest when p is close to 0 or 1}
+  \item
+    \textbf{Smaller sample sizes (low n) with extreme proportions (p
+    close to 0 or 1) may violate the success-failure condition (np ≥ 10
+    and n(1-p) ≥ 10)}
+  \end{itemize}
+
+  \textbf{Practical implications:}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Larger sample sizes always provide more precise estimates
+    (smaller SE) regardless of the true proportion}
+  \item
+    \textbf{When designing studies where p is expected to be near 0.5,
+    larger sample sizes are needed to achieve the same precision as when
+    p is near 0 or 1}
+  \item
+    \textbf{For rare events (p near 0 or 1), you need larger sample
+    sizes to ensure the success-failure condition is met}
+  \end{itemize}
+\end{enumerate}
+
+\textbf{In summary, n affects the spread of the distribution in an
+inverse square root relationship (SE ∝ 1/√n), while the effect of p
+follows a parabolic relationship with maximum spread at p = 0.5.
+Together, these parameters determine both the shape and precision of the
+sampling distribution.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\subsection{More Practice}\label{more-practice}
+
+For some of the exercises below, you will conduct inference comparing
+two proportions. In such cases, you have a response variable that is
+categorical, and an explanatory variable that is also categorical, and
+you are comparing the proportions of success of the response variable
+across the levels of the explanatory variable. This means that when
+using \texttt{infer}, you need to include both variables within
+\texttt{specify}.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{8}
+\tightlist
+\item
+  Is there convincing evidence that those who sleep 10+ hours per day
+  are more likely to strength train every day of the week? As always,
+  write out the hypotheses for any tests you conduct and outline the
+  status of the conditions for inference. If you find a significant
+  difference, also quantify this difference with a confidence interval.
+  First, let's write out the hypotheses: H₀: There is no difference in
+  the proportion of people who strength train every day between those
+  who sleep 10+ hours and those who sleep less than 10 hours. H₁: The
+  proportion of people who strength train every day is higher among
+  those who sleep 10+ hours compared to those who sleep less than 10
+  hours.
+\end{enumerate}
+
+Conditions for inference:
+
+Random sampling: The YRBSS dataset uses a complex sampling design to be
+representative of high school students Independence: Each observation is
+from a different student Success-failure condition: Need to verify np ≥
+10 and n(1-p) ≥ 10 for both groups
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Create indicator variables}
+\NormalTok{yrbss\_modified }\OtherTok{\textless{}{-}}\NormalTok{ yrbss }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{sleep\_10plus =} \FunctionTok{ifelse}\NormalTok{(school\_night\_hours\_sleep }\SpecialCharTok{\textgreater{}=} \StringTok{"10"}\NormalTok{, }\StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{),}
+    \AttributeTok{strength\_daily =} \FunctionTok{ifelse}\NormalTok{(strength\_training\_7d }\SpecialCharTok{==} \StringTok{"7"}\NormalTok{, }\StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Drop missing values}
+\NormalTok{yrbss\_complete }\OtherTok{\textless{}{-}}\NormalTok{ yrbss\_modified }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{drop\_na}\NormalTok{(sleep\_10plus, strength\_daily)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Check the success{-}failure condition}
+\NormalTok{sleep\_10plus\_counts }\OtherTok{\textless{}{-}}\NormalTok{ yrbss\_complete }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(sleep\_10plus) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}
+    \AttributeTok{n =} \FunctionTok{n}\NormalTok{(),}
+    \AttributeTok{strength\_daily\_count =} \FunctionTok{sum}\NormalTok{(strength\_daily }\SpecialCharTok{==} \StringTok{"yes"}\NormalTok{),}
+    \AttributeTok{proportion =} \FunctionTok{mean}\NormalTok{(strength\_daily }\SpecialCharTok{==} \StringTok{"yes"}\NormalTok{)}
+\NormalTok{  )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate observed difference in proportions}
+\NormalTok{obs\_diff }\OtherTok{\textless{}{-}}\NormalTok{ sleep\_10plus\_counts }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarize}\NormalTok{(}\AttributeTok{diff =}\NormalTok{ proportion[sleep\_10plus }\SpecialCharTok{==} \StringTok{"yes"}\NormalTok{] }\SpecialCharTok{{-}}\NormalTok{ proportion[sleep\_10plus }\SpecialCharTok{==} \StringTok{"no"}\NormalTok{]) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{pull}\NormalTok{(diff)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Conduct hypothesis test using infer}
+\NormalTok{p\_value }\OtherTok{\textless{}{-}}\NormalTok{ yrbss\_complete }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{specify}\NormalTok{(strength\_daily }\SpecialCharTok{\textasciitilde{}}\NormalTok{ sleep\_10plus, }\AttributeTok{success =} \StringTok{"yes"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{hypothesize}\NormalTok{(}\AttributeTok{null =} \StringTok{"independence"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{generate}\NormalTok{(}\AttributeTok{reps =} \DecValTok{1000}\NormalTok{, }\AttributeTok{type =} \StringTok{"permute"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{calculate}\NormalTok{(}\AttributeTok{stat =} \StringTok{"diff in props"}\NormalTok{, }\AttributeTok{order =} \FunctionTok{c}\NormalTok{(}\StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{get\_p\_value}\NormalTok{(}\AttributeTok{obs\_stat =}\NormalTok{ obs\_diff, }\AttributeTok{direction =} \StringTok{"greater"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"P{-}value:"}\NormalTok{, p\_value))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "P-value: 0.32"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Calculate 95\% confidence interval}
+\NormalTok{ci\_result }\OtherTok{\textless{}{-}}\NormalTok{ yrbss\_complete }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{specify}\NormalTok{(strength\_daily }\SpecialCharTok{\textasciitilde{}}\NormalTok{ sleep\_10plus, }\AttributeTok{success =} \StringTok{"yes"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{generate}\NormalTok{(}\AttributeTok{reps =} \DecValTok{1000}\NormalTok{, }\AttributeTok{type =} \StringTok{"bootstrap"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{calculate}\NormalTok{(}\AttributeTok{stat =} \StringTok{"diff in props"}\NormalTok{, }\AttributeTok{order =} \FunctionTok{c}\NormalTok{(}\StringTok{"yes"}\NormalTok{, }\StringTok{"no"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{get\_ci}\NormalTok{(}\AttributeTok{level =} \FloatTok{0.95}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(}\StringTok{"95\% Confidence Interval:"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "95% Confidence Interval:"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(ci\_result)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 2
+##   lower_ci upper_ci
+##      <dbl>    <dbl>
+## 1  -0.0168   0.0319
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Print conclusion}
+\NormalTok{alpha }\OtherTok{\textless{}{-}} \FloatTok{0.05}
+\ControlFlowTok{if}\NormalTok{ (p\_value }\SpecialCharTok{\textless{}}\NormalTok{ alpha) \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Reject the null hypothesis (p{-}value ="}\NormalTok{, p\_value, }\StringTok{"\textless{} alpha ="}\NormalTok{, alpha, }\StringTok{")"}\NormalTok{))}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"There is convincing evidence that those who sleep 10+ hours per day are more likely to strength train every day."}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Fail to reject the null hypothesis (p{-}value ="}\NormalTok{, p\_value, }\StringTok{"\textgreater{}= alpha ="}\NormalTok{, alpha, }\StringTok{")"}\NormalTok{))}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"There is not convincing evidence that those who sleep 10+ hours per day are more likely to strength train every day."}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Fail to reject the null hypothesis (p-value = 0.32 >= alpha = 0.05 )"
+## [1] "There is not convincing evidence that those who sleep 10+ hours per day are more likely to strength train every day."
+\end{verbatim}
+
+\textbf{we fail to reject the null hypothesis. There is not convincing
+evidence that those who sleep 10+ hours per day are more likely to
+strength train every day of the week}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{9}
+\item
+  Let's say there has been no difference in likeliness to strength train
+  every day of the week for those who sleep 10+ hours. What is the
+  probablity that you could detect a change (at a significance level of
+  0.05) simply by chance? \emph{Hint:} Review the definition of the Type
+  1 error.
+
+  \textbf{The probability of detecting a change (rejecting the null
+  hypothesis) when there is actually no difference (the null hypothesis
+  is true) is exactly the significance level, which is 0.05 or 5\% in
+  this case.}
+\end{enumerate}
+
+\textbf{This is the definition of a Type I error: incorrectly rejecting
+a true null hypothesis. The significance level (alpha) that we set at
+0.05 is precisely the probability we're willing to accept for making
+this type of error.}
+
+\textbf{In other words, if there is truly no difference in the
+likelihood of strength training every day between those who sleep 10+
+hours and those who don't, we would still expect to find a
+``statistically significant'' difference about 5\% of the time simply
+due to random sampling variation.}
+
+\textbf{This is why we can never ``prove'' the null hypothesis - we can
+only fail to reject it. Even when a study finds a ``significant'' result
+with p \textless{} 0.05, there's still a 5\% chance that the finding is
+just due to random chance when the null hypothesis is actually true.}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{10}
+\tightlist
+\item
+  Suppose you're hired by the local government to estimate the
+  proportion of residents that attend a religious service on a weekly
+  basis. According to the guidelines, the estimate must have a margin of
+  error no greater than 1\% with 95\% confidence. You have no idea what
+  to expect for \(p\). How many people would you have to sample to
+  ensure that you are within the guidelines?\\
+  \emph{Hint:} Refer to your plot of the relationship between \(p\) and
+  margin of error. This question does not require using a dataset.
+\end{enumerate}
+
+\textbf{To determine the required sample size for estimating a
+proportion with a margin of error no greater than 1\% at 95\%
+confidence, I need to work with the margin of error formula:}
+
+\textbf{ME = 1.96 × √(p(1-p)/n)}
+
+\textbf{Where: - ME is the margin of error (0.01 or 1\%) - 1.96 is the
+z-score for 95\% confidence - p is the population proportion - n is the
+required sample size}
+
+\textbf{Since I don't know what to expect for p, I need to use a
+conservative approach. From the plot of the relationship between p and
+margin of error, we know that the margin of error is maximized when p =
+0.5. Therefore, to ensure the margin of error doesn't exceed 1\%
+regardless of the true proportion, I'll use p = 0.5 in my calculation.}
+
+\textbf{I can solve for n:}
+
+\textbf{0.01 = 1.96 × √(0.5 × 0.5/n) 0.01 = 1.96 × √(0.25/n) 0.01 = 1.96
+× 0.5/√n 0.01 × √n = 1.96 × 0.5 0.01 × √n = 0.98 √n = 0.98/0.01 √n = 98
+n = 9,604}
+
+\textbf{Therefore, I would need to sample at least 9,604 people to
+ensure a margin of error no greater than 1\% with 95\% confidence,
+regardless of what the true proportion turns out to be.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\end{document}
